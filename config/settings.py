@@ -35,7 +35,6 @@ GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-3.5-flash')
 
 # Aplicaciones instaladas (Separación modular por capas)
 DJANGO_APPS = [
-    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,9 +43,19 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS = [
-    'channels',
-]
+# Daphne y Channels opcionales (habilitados en Docker/ASGI, ignorados limpiamente en PythonAnywhere/WSGI)
+try:
+    import daphne
+    DJANGO_APPS.insert(0, 'daphne')
+except ImportError:
+    pass
+
+THIRD_PARTY_APPS = []
+try:
+    import channels
+    THIRD_PARTY_APPS.append('channels')
+except ImportError:
+    pass
 
 LOCAL_APPS = [
     'core.apps.CoreConfig',

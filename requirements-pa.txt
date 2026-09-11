@@ -1,0 +1,3 @@
+# Dependencias optimizadas para PythonAnywhere (Tier Gratuito - 512 MB de cuota de disco)
+# PythonAnywhere opera sobre WSGI nativo y SQLite, evitando paquetes pesados (Twisted/Daphne/Postgres)
+Django>=5.1,<5.2

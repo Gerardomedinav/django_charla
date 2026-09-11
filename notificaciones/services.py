@@ -1,12 +1,19 @@
 import asyncio
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
+
+try:
+    from channels.layers import get_channel_layer
+    from asgiref.sync import async_to_sync
+except ImportError:
+    get_channel_layer = None
+    async_to_sync = None
 
 def notificar_avance_usuario(tipo_evento, nombre_desafio="", progreso=None, frase=None, svg=None):
     """
     Disparador de notificaciones push WebSocket hacia todos los clientes del laboratorio.
     Puede ser invocado desde views, models, o comandos de terminal de Django.
     """
+    if not get_channel_layer:
+        return
     channel_layer = get_channel_layer()
     if not channel_layer:
         return
