@@ -1,0 +1,523 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swagger UI | El Restaurante de Django API (FORMO DEV)</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/formodevs_robot.svg' %}">
+
+  <!-- Swagger UI CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.18.2/swagger-ui.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #080c14;
+      --card-dark: #0f172a;
+      --border-dark: #1e293b;
+      --cyan-neon: #00e5ff;
+      --emerald-neon: #10b981;
+      --orange-neon: #f97316;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-dark);
+      color: #e2e8f0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Custom Topbar */
+    .custom-topbar {
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #0b0f19;
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.15);
+    }
+
+    .brand-logo img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fb923c, #fcd34d, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    /* Swagger Official PNG Badge */
+    .swagger-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #334155;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .swagger-badge-img {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 4px rgba(73, 204, 144, 0.3));
+    }
+
+    .swagger-badge-version {
+      font-size: 11px;
+      font-weight: 700;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.12);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-action {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-action:hover {
+      background: #334155;
+      color: #ffffff;
+      border-color: #64748b;
+    }
+
+    .btn-redoc {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(56, 189, 248, 0.15));
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+
+    .btn-redoc:hover {
+      background: linear-gradient(135deg, #0284c7, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #0284c7, #0d9488);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #0369a1, #0f766e);
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+    }
+
+    /* Dark Mode Overrides for Swagger UI con Alto Contraste */
+    .swagger-ui {
+      font-family: 'Outfit', sans-serif !important;
+      color: #e2e8f0 !important;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    .swagger-ui .topbar {
+      display: none !important;
+    }
+
+    .swagger-ui .info {
+      margin-bottom: 30px !important;
+    }
+
+    .swagger-ui .info .title {
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 32px !important;
+    }
+
+    .swagger-ui .info p, 
+    .swagger-ui .info li,
+    .swagger-ui .info .description {
+      color: #cbd5e1 !important;
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+    }
+
+    .swagger-ui .info a {
+      color: #38bdf8 !important;
+    }
+
+    /* Barra de esquemas y servidores */
+    .swagger-ui .scheme-container {
+      background: rgba(15, 23, 42, 0.6) !important;
+      border: 1px solid var(--border-dark) !important;
+      border-radius: 12px !important;
+      padding: 14px 20px !important;
+      margin-bottom: 24px !important;
+      box-shadow: none !important;
+    }
+
+    .swagger-ui .scheme-container label {
+      color: #94a3b8 !important;
+    }
+
+    .swagger-ui .scheme-container select {
+      background: #090e1a !important;
+      color: #f8fafc !important;
+      border: 1px solid #334155 !important;
+      border-radius: 6px !important;
+      padding: 4px 10px !important;
+    }
+
+    /* Filtro de búsqueda */
+    .swagger-ui .filter-container {
+      margin-bottom: 24px !important;
+      padding: 0 !important;
+    }
+
+    .swagger-ui .filter-container input {
+      background: #090e1a !important;
+      border: 1px solid #334155 !important;
+      color: #f8fafc !important;
+      border-radius: 10px !important;
+      padding: 10px 16px !important;
+      font-size: 14px !important;
+    }
+
+    .swagger-ui .filter-container input::placeholder {
+      color: #64748b !important;
+    }
+
+    /* Etiquetas de Categoría (Tags) */
+    .swagger-ui .opblock-tag {
+      color: #f8fafc !important;
+      border-bottom: 1px solid var(--border-dark) !important;
+      padding: 14px 0 !important;
+      font-weight: 700 !important;
+      font-size: 20px !important;
+    }
+
+    .swagger-ui .opblock-tag small {
+      color: #94a3b8 !important;
+      font-size: 13px !important;
+    }
+
+    /* Bloques de Operación (Endpoints) */
+    .swagger-ui .opblock {
+      background: #0f172a !important;
+      border: 1px solid var(--border-dark) !important;
+      border-radius: 14px !important;
+      margin-bottom: 16px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .swagger-ui .opblock .opblock-summary {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      padding: 12px 18px !important;
+    }
+
+    .swagger-ui .opblock .opblock-summary-method {
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      padding: 6px 14px !important;
+    }
+
+    .swagger-ui .opblock.opblock-get .opblock-summary-method {
+      background: #10b981 !important;
+      color: #ffffff !important;
+    }
+
+    .swagger-ui .opblock.opblock-post .opblock-summary-method {
+      background: #f59e0b !important;
+      color: #ffffff !important;
+    }
+
+    .swagger-ui .opblock .opblock-summary-path {
+      color: #f8fafc !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 14px !important;
+    }
+
+    .swagger-ui .opblock .opblock-summary-description {
+      color: #cbd5e1 !important;
+      font-size: 13px !important;
+    }
+
+    .swagger-ui .opblock-body {
+      background: #090e1a !important;
+      color: #e2e8f0 !important;
+      padding: 18px !important;
+      border-radius: 0 0 14px 14px !important;
+    }
+
+    .swagger-ui .opblock-section-header {
+      background: transparent !important;
+      border-bottom: 1px solid var(--border-dark) !important;
+    }
+
+    .swagger-ui .opblock-section-header h4 {
+      color: #f8fafc !important;
+      font-weight: 700 !important;
+    }
+
+    /* Tablas de Parámetros */
+    .swagger-ui table thead tr th, 
+    .swagger-ui table thead tr td {
+      color: #94a3b8 !important;
+      border-bottom: 1px solid var(--border-dark) !important;
+    }
+
+    .swagger-ui .parameter__name {
+      color: #f8fafc !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    .swagger-ui .parameter__type {
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    .swagger-ui input[type=text], 
+    .swagger-ui textarea {
+      background: #020617 !important;
+      color: #f8fafc !important;
+      border: 1px solid #334155 !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+    }
+
+    .swagger-ui select {
+      background: #0f172a !important;
+      color: #f8fafc !important;
+      border: 1px solid #334155 !important;
+      border-radius: 6px !important;
+      padding: 6px 10px !important;
+    }
+
+    /* Botones de acción */
+    .swagger-ui .btn {
+      border-radius: 8px !important;
+      border: 1px solid #334155 !important;
+      color: #cbd5e1 !important;
+      font-weight: 600 !important;
+    }
+
+    .swagger-ui .btn.try-out__btn {
+      background: #1e293b !important;
+      color: #38bdf8 !important;
+      border-color: #0284c7 !important;
+    }
+
+    .swagger-ui .btn.try-out__btn:hover {
+      background: #0284c7 !important;
+      color: #ffffff !important;
+    }
+
+    .swagger-ui .btn.execute {
+      background-color: #f97316 !important;
+      border-color: #f97316 !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      box-shadow: 0 0 12px rgba(249, 115, 22, 0.3) !important;
+    }
+
+    .swagger-ui .btn.execute:hover {
+      background-color: #ea580c !important;
+    }
+
+    /* Respuestas y Modelos */
+    .swagger-ui .responses-table {
+      background: transparent !important;
+    }
+
+    .swagger-ui .response-col_status {
+      color: #f8fafc !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-weight: 700 !important;
+    }
+
+    .swagger-ui .response-col_description {
+      color: #cbd5e1 !important;
+    }
+
+    .swagger-ui .highlight-code, 
+    .swagger-ui .microlight {
+      background: #040711 !important;
+      border-radius: 8px !important;
+      border: 1px solid #1e293b !important;
+    }
+
+    .swagger-ui .model-box, 
+    .swagger-ui section.models {
+      background: #0f172a !important;
+      border: 1px solid var(--border-dark) !important;
+      border-radius: 14px !important;
+    }
+
+    .swagger-ui section.models h4 {
+      color: #f1f5f9 !important;
+      font-weight: 700 !important;
+    }
+
+    .swagger-ui .model-title {
+      color: #38bdf8 !important;
+    }
+
+    .swagger-ui .prop-type {
+      color: #34d399 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar de Navegación Swagger -->
+  <header class="custom-topbar">
+    <div class="brand-group">
+      <a href="/" class="brand-section" title="Volver al Restaurante">
+        <div class="brand-logo">
+          <img src="{% static 'images/formodevs_robot.svg' %}" alt="FormoDevs Robot">
+        </div>
+        <div>
+          <h1 class="brand-title">El Restaurante de Django API</h1>
+          <p class="brand-subtitle">Documentación Swagger UI • Pruebas QA &amp; Frontend</p>
+        </div>
+      </a>
+
+      <!-- Badge oficial Swagger PNG -->
+      <div class="swagger-badge">
+        <img src="{% static 'images/swagger_logo_white.png' %}" alt="Swagger" class="swagger-badge-img">
+        <span class="swagger-badge-version">OpenAPI 3.0</span>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <a href="/api/schema.json" target="_blank" class="btn-action" title="Descargar especificación OpenAPI 3.0 en JSON">
+        <span>📄</span>
+        <span>OpenAPI JSON</span>
+      </a>
+      <a href="/redoc/" class="btn-action btn-redoc" title="Ver documentación en formato ReDoc de 3 paneles">
+        <span>📖</span>
+        <span>ReDoc (3 Paneles)</span>
+      </a>
+      <a href="/" class="btn-action btn-primary">
+        <span>🍽️</span>
+        <span>Dashboard</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenedor Swagger UI -->
+  <div id="swagger-ui"></div>
+
+  <!-- Swagger UI Scripts -->
+  <script src="https://unpkg.com/swagger-ui-dist@5.18.2/swagger-ui-bundle.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist@5.18.2/swagger-ui-standalone-preset.js"></script>
+  <script>
+    window.onload = function() {
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      const ui = SwaggerUIBundle({
+        url: "/api/schema.json",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "BaseLayout",
+        defaultModelsExpandDepth: 1,
+        defaultModelExpandDepth: 2,
+        docExpansion: "list",
+        showExtensions: true,
+        showCommonExtensions: true,
+        displayRequestDuration: true,
+        filter: true,
+        tryItOutEnabled: true,
+        requestInterceptor: function(request) {
+          const csrfToken = getCookie('csrftoken');
+          if (csrfToken && request.method !== 'GET') {
+            request.headers['X-CSRFToken'] = csrfToken;
+          }
+          return request;
+        }
+      });
+      window.ui = ui;
+    };
+  </script>
+</body>
+</html>

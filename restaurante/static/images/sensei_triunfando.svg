@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradTri" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="0.5" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#080c14" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="glowGold" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Fondo circular con borde dorado estelar -->
+  <circle cx="100" cy="100" r="96" fill="url(#bgGradTri)" stroke="url(#goldGrad)" stroke-width="3" />
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.8" />
+
+  <!-- Destellos / Estrellas de victoria -->
+  <path d="M 30 50 L 33 58 L 41 61 L 33 64 L 30 72 L 27 64 L 19 61 L 27 58 Z" fill="#fbbf24" opacity="0.9" />
+  <path d="M 170 45 L 172 51 L 178 53 L 172 55 L 170 61 L 168 55 L 162 53 L 168 51 Z" fill="#fbbf24" opacity="0.9" />
+  <circle cx="165" cy="85" r="3" fill="#f59e0b" />
+  <circle cx="35" cy="95" r="2.5" fill="#f59e0b" />
+
+  <!-- Sombra inferior -->
+  <ellipse cx="100" cy="182" rx="72" ry="12" fill="#030712" opacity="0.7" />
+
+  <!-- Corona dorada triunfante -->
+  <g filter="url(#glowGold)" transform="translate(76, 28)">
+    <path d="M 0 20 L 8 4 L 24 16 L 40 4 L 48 20 Z" fill="url(#goldGrad)" stroke="#78350f" stroke-width="1.2" />
+    <circle cx="8" cy="4" r="3" fill="#ef4444" />
+    <circle cx="24" cy="16" r="3.5" fill="#3b82f6" />
+    <circle cx="40" cy="4" r="3" fill="#10b981" />
+  </g>
+
+  <!-- Cuerpo y Hoodie Tech dorado -->
+  <path d="M 45 190 C 45 145, 70 135, 100 135 C 130 135, 155 145, 155 190 Z" fill="#1e293b" stroke="#d97706" stroke-width="2.5" />
+  <path d="M 82 136 Q 100 152 118 136 L 108 175 L 92 175 Z" fill="#0f172a" />
+  <path d="M 88 136 Q 100 148 112 136" stroke="#f59e0b" stroke-width="2.5" fill="none" />
+
+  <!-- Cintas del hoodie -->
+  <line x1="94" y1="145" x2="93" y2="162" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round" />
+  <line x1="106" y1="145" x2="107" y2="162" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round" />
+
+  <!-- Cabeza y Cuello -->
+  <rect x="91" y="115" width="18" height="22" rx="4" fill="#d97706" />
+  <ellipse cx="100" cy="92" rx="30" ry="34" fill="url(#skinGrad)" />
+
+  <!-- Pelo y barba -->
+  <path d="M 70 82 C 68 55, 100 48, 130 65 C 132 78, 126 84, 126 84 C 122 68, 102 60, 78 72 Z" fill="#1c1917" />
+  <path d="M 76 96 C 76 122, 90 128, 100 128 C 110 128, 124 122, 124 96 C 124 112, 110 122, 100 122 C 90 122, 76 112, 76 96 Z" fill="#1c1917" opacity="0.9" />
+
+  <!-- Sonrisa triunfante sapucay -->
+  <path d="M 88 106 Q 100 122 112 106" stroke="#78350f" stroke-width="2.8" stroke-linecap="round" fill="#78350f" />
+  <path d="M 91 107 Q 100 114 109 107" fill="#ffffff" />
+
+  <!-- Anteojos Tech Dorados / Reflejo Solar -->
+  <g filter="url(#glowGold)">
+    <rect x="74" y="82" width="22" height="15" rx="4" fill="url(#goldGrad)" stroke="#b45309" stroke-width="2" />
+    <rect x="104" y="82" width="22" height="15" rx="4" fill="url(#goldGrad)" stroke="#b45309" stroke-width="2" />
+    <line x1="96" y1="87" x2="104" y2="87" stroke="#b45309" stroke-width="2.5" />
+    <text x="85" y="93" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">★</text>
+    <text x="115" y="93" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#0f172a" text-anchor="middle">★</text>
+  </g>
+
+  <!-- Guampa de Oro de Tereré Formoseño -->
+  <g transform="translate(132, 125)" filter="url(#glowGold)">
+    <path d="M 6 22 L 9 52 C 10 57, 28 57, 29 52 L 32 22 Z" fill="url(#goldGrad)" stroke="#78350f" stroke-width="1.5" />
+    <ellipse cx="19" cy="22" rx="13" ry="3.5" fill="#fde047" />
+    <ellipse cx="19" cy="22" rx="11" ry="2.5" fill="#15803d" />
+    <line x1="17" y1="23" x2="7" y2="2" stroke="#fef08a" stroke-width="3" stroke-linecap="round" />
+    <circle cx="6" cy="1" r="2.5" fill="#f59e0b" />
+  </g>
+
+  <!-- Badge Estado: ¡SAPUCAY! 100% -->
+  <g transform="translate(10, 18)">
+    <rect x="0" y="0" width="96" height="22" rx="11" fill="#78350f" stroke="#fbbf24" stroke-width="1.8" />
+    <circle cx="11" cy="11" r="5" fill="#eab308" />
+    <text x="54" y="14.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#fef08a" text-anchor="middle">🏆 100% SAPUCAY</text>
+  </g>
+</svg>

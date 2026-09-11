@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <!-- Atardecer formoseño sobre la costanera -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="40%" stop-color="#31103f" />
+      <stop offset="70%" stop-color="#7c2d12" />
+      <stop offset="90%" stop-color="#c2410c" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c2410c" stop-opacity="0.7" />
+      <stop offset="40%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="50%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Cielo de atardecer -->
+  <rect width="1200" height="260" fill="url(#skyGrad)" />
+
+  <!-- Sol poniente del litoral -->
+  <circle cx="950" cy="200" r="70" fill="#fde047" opacity="0.85" filter="url(#neonGlow)" />
+
+  <!-- Siluetas de la Costanera y Palmeras de Formosa al fondo -->
+  <path d="M 0 240 Q 300 230 600 238 T 1200 235 L 1200 260 L 0 260 Z" fill="#18181b" />
+  <!-- Palmeras silueta -->
+  <g fill="#09090b">
+    <!-- Palmera 1 -->
+    <path d="M 820 240 Q 825 180 840 130 L 845 130 Q 830 180 825 240 Z" />
+    <path d="M 840 130 Q 870 120 900 135 Q 865 135 840 130 Z" />
+    <path d="M 840 130 Q 810 115 780 125 Q 815 130 840 130 Z" />
+    <path d="M 840 130 Q 855 100 870 85 Q 850 110 840 130 Z" />
+    <path d="M 840 130 Q 825 100 810 85 Q 830 110 840 130 Z" />
+    <!-- Palmera 2 -->
+    <path d="M 760 240 Q 763 195 775 155 L 778 155 Q 768 195 764 240 Z" />
+    <path d="M 775 155 Q 800 145 825 155 Q 795 155 775 155 Z" />
+    <path d="M 775 155 Q 750 140 725 150 Q 755 155 775 155 Z" />
+  </g>
+
+  <!-- Río Paraguay con reflejos dorados -->
+  <rect y="240" width="1200" height="160" fill="url(#waterGrad)" />
+  <line x1="880" y1="245" x2="1020" y2="245" stroke="#fdba74" stroke-width="2" opacity="0.6" />
+  <line x1="895" y1="255" x2="1005" y2="255" stroke="#fb923c" stroke-width="3" opacity="0.5" />
+  <line x1="910" y1="270" x2="990" y2="270" stroke="#f97316" stroke-width="4" opacity="0.4" />
+  <line x1="925" y1="290" x2="975" y2="290" stroke="#ea580c" stroke-width="3" opacity="0.3" />
+
+  <!-- Deck / Terraza del Restaurante Tech en primer plano -->
+  <polygon points="0,310 1200,280 1200,400 0,400" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+  <line x1="0" y1="335" x2="1200" y2="305" stroke="#1e293b" stroke-width="2" />
+  <line x1="0" y1="365" x2="1200" y2="335" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Barandas de cristal modernas con iluminación LED -->
+  <line x1="0" y1="310" x2="1200" y2="280" stroke="#38bdf8" stroke-width="3" filter="url(#neonGlow)" />
+
+  <!-- Mesita con Laptop y Tereré con luz de ambiente -->
+  <g transform="translate(180, 245)">
+    <!-- Mesa -->
+    <ellipse cx="60" cy="85" rx="55" ry="12" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+    <rect x="56" y="85" width="8" height="40" fill="#0f172a" />
+    <!-- Laptop abierta -->
+    <rect x="35" y="55" width="36" height="24" rx="2" fill="#0284c7" stroke="#38bdf8" stroke-width="1" filter="url(#neonGlow)" />
+    <text x="53" y="70" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="bold" fill="#ffffff" text-anchor="middle">&lt;/&gt;</text>
+    <polygon points="30,79 76,79 82,85 24,85" fill="#334155" />
+    <!-- Jarra de Tereré con Bombilla -->
+    <rect x="80" y="58" width="16" height="25" rx="3" fill="#10b981" opacity="0.8" />
+    <line x1="88" y1="58" x2="96" y2="46" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Cartel Neón Principal "EL RESTAURANTE DE DJANGO" -->
+  <g transform="translate(480, 50)">
+    <!-- Marco flotante neón -->
+    <rect x="0" y="0" width="580" height="150" rx="16" fill="#0b0f19" fill-opacity="0.85" stroke="#f97316" stroke-width="2.5" filter="url(#neonGlow)" />
+
+    <!-- Badges superiores -->
+    <g transform="translate(25, 20)">
+      <rect width="105" height="22" rx="11" fill="#092e20" stroke="#10b981" stroke-width="1.2" />
+      <text x="52" y="15" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#34d399" text-anchor="middle">🐍 DJANGO 5.1</text>
+    </g>
+    <g transform="translate(140, 20)">
+      <rect width="95" height="22" rx="11" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2" />
+      <text x="47" y="15" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#38bdf8" text-anchor="middle">🐳 DOCKER</text>
+    </g>
+    <g transform="translate(245, 20)">
+      <rect width="130" height="22" rx="11" fill="#31103f" stroke="#e879f9" stroke-width="1.2" />
+      <text x="65" y="15" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#e879f9" text-anchor="middle">🐘 POSTGRESQL</text>
+    </g>
+    <g transform="translate(385, 20)">
+      <rect width="170" height="22" rx="11" fill="#431407" stroke="#f97316" stroke-width="1.2" />
+      <text x="85" y="15" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#fb923c" text-anchor="middle">☀️ COMUNIDAD FORMO DEV</text>
+    </g>
+
+    <!-- Título Neón -->
+    <text x="290" y="85" font-family="'Inter', sans-serif" font-size="28" font-weight="900" fill="url(#neonOrange)" text-anchor="middle" letter-spacing="1.5">
+      EL RESTAURANTE DE DJANGO
+    </text>
+    <text x="290" y="112" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f8fafc" text-anchor="middle">
+      Laboratorio Interactivo de Arquitectura MVT &amp; Tres Capas
+    </text>
+    <text x="290" y="132" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">
+      Formosa Tech Hub • Desde el Menú hasta el Despacho en Tiempo Real
+    </text>
+  </g>
+</svg>

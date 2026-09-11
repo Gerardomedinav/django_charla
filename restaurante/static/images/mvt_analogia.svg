@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="glowOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <linearGradient id="glowCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="glowGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Fondo oscuro tecnológico -->
+  <rect width="900" height="360" rx="16" fill="#0b0f19" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Título Superior -->
+  <text x="450" y="38" font-family="'Inter', sans-serif" font-size="18" font-weight="800" fill="#f8fafc" text-anchor="middle" letter-spacing="1">
+    ARQUITECTURA DE TRES CAPAS &amp; ANALOGÍA MVT EN DJANGO
+  </text>
+  <text x="450" y="58" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">
+    De la petición del comensal en la mesa al almacenamiento persistente en PostgreSQL
+  </text>
+
+  <!-- ==================== BLOQUE 1: PRESENTACIÓN (MOZO / TEMPLATE & URLS) ==================== -->
+  <g transform="translate(30, 80)" filter="url(#cardShadow)">
+    <rect width="245" height="235" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5" />
+    <!-- Header Card -->
+    <rect width="245" height="42" rx="12" fill="#0369a1" />
+    <rect y="30" width="245" height="12" fill="#0369a1" />
+    <text x="122" y="26" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">
+      1. CAPA PRESENTACIÓN
+    </text>
+    <text x="122" y="70" font-family="'Inter', sans-serif" font-size="28" text-anchor="middle">🤵</text>
+    <text x="122" y="95" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#38bdf8" text-anchor="middle">
+      El Mozo &amp; La Carta
+    </text>
+    <text x="122" y="115" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#f59e0b" text-anchor="middle">
+      TEMPLATES + URLS
+    </text>
+
+    <!-- Explicación -->
+    <rect x="15" y="130" width="215" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="150" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Atiende al cliente (Navegador)</text>
+    <text x="25" y="170" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• URLs enrutan el pedido HTTP</text>
+    <text x="25" y="190" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Renderiza HTML + Tailwind</text>
+    <text x="25" y="205" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38bdf8">dashboard.html | urls.py</text>
+  </g>
+
+  <!-- Flecha 1 -> 2 (Comanda va a la cocina) -->
+  <g transform="translate(285, 175)">
+    <path d="M 0 10 L 40 10" stroke="#38bdf8" stroke-width="3" stroke-dasharray="4 2" />
+    <polygon points="40,5 50,10 40,15" fill="#38bdf8" />
+    <text x="25" y="-3" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Comanda</text>
+  </g>
+
+  <!-- ==================== BLOQUE 2: APLICACIÓN (COCINERO / VIEWS) ==================== -->
+  <g transform="translate(325, 80)" filter="url(#cardShadow)">
+    <rect width="250" height="235" rx="12" fill="url(#cardGrad1)" stroke="#f97316" stroke-width="1.8" />
+    <!-- Header Card -->
+    <rect width="250" height="42" rx="12" fill="#c2410c" />
+    <rect y="30" width="250" height="12" fill="#c2410c" />
+    <text x="125" y="26" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">
+      2. CAPA DE APLICACIÓN
+    </text>
+    <text x="125" y="70" font-family="'Inter', sans-serif" font-size="28" text-anchor="middle">👨‍🍳</text>
+    <text x="125" y="95" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#f97316" text-anchor="middle">
+      El Cocinero
+    </text>
+    <text x="125" y="115" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#fb923c" text-anchor="middle">
+      VIEWS (Vistas de Django)
+    </text>
+
+    <!-- Explicación -->
+    <rect x="15" y="130" width="220" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="150" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Recibe la orden y valida datos</text>
+    <text x="25" y="170" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Aplica la lógica y receta</text>
+    <text x="25" y="190" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Consulta insumos vía ORM</text>
+    <text x="25" y="205" font-family="'JetBrains Mono', monospace" font-size="9" fill="#f97316">views.py | chatbot.py</text>
+  </g>
+
+  <!-- Flecha 2 -> 3 (Cocinero pide insumos a la despensa) -->
+  <g transform="translate(585, 175)">
+    <path d="M 0 10 L 40 10" stroke="#10b981" stroke-width="3" stroke-dasharray="4 2" />
+    <polygon points="40,5 50,10 40,15" fill="#10b981" />
+    <text x="25" y="-3" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#10b981" text-anchor="middle">ORM Query</text>
+  </g>
+
+  <!-- ==================== BLOQUE 3: DATOS (DESPENSA / MODELS & DB) ==================== -->
+  <g transform="translate(625, 80)" filter="url(#cardShadow)">
+    <rect width="245" height="235" rx="12" fill="url(#cardGrad1)" stroke="#10b981" stroke-width="1.5" />
+    <!-- Header Card -->
+    <rect width="245" height="42" rx="12" fill="#047857" />
+    <rect y="30" width="245" height="12" fill="#047857" />
+    <text x="122" y="26" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">
+      3. CAPA DE DATOS
+    </text>
+    <text x="122" y="70" font-family="'Inter', sans-serif" font-size="28" text-anchor="middle">📦</text>
+    <text x="122" y="95" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#34d399" text-anchor="middle">
+      La Despensa
+    </text>
+    <text x="122" y="115" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#6ee7b7" text-anchor="middle">
+      MODELS + POSTGRESQL
+    </text>
+
+    <!-- Explicación -->
+    <rect x="15" y="130" width="215" height="85" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="150" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Recetas e ingredientes base</text>
+    <text x="25" y="170" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Estructura tablas relacionales</text>
+    <text x="25" y="190" font-family="'Inter', sans-serif" font-size="10.5" fill="#e2e8f0">• Persistencia en volumen Docker</text>
+    <text x="25" y="205" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34d399">models.py | PostgreSQL</text>
+  </g>
+
+  <!-- Flecha de retorno inferior (Plato servido de vuelta a la mesa) -->
+  <path d="M 747 325 C 747 345, 152 345, 152 325" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6 3" />
+  <polygon points="152,320 147,330 157,330" fill="#f59e0b" />
+  <rect x="365" y="330" width="170" height="22" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1" />
+  <text x="450" y="345" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#f59e0b" text-anchor="middle">
+    🍽️ Plato Servido al Comensal (HTTP 200 OK)
+  </text>
+</svg>

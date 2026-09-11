@@ -1,0 +1,621 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReDoc | El Restaurante de Django API (FORMO DEV)</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'images/formodevs_robot.svg' %}">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-sidebar: #060911;
+      --bg-right-panel: #0a0f1d;
+      --bg-card: #0f172a;
+      --border-color: #1e293b;
+      --border-light: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --emerald: #10b981;
+      --orange: #f97316;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Scrollbars elegantes para modo oscuro */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060911;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Topbar Premium */
+    .custom-topbar {
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .robot-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #020617;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 3px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid #334155;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .swagger-logo-header {
+      height: 20px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 6px rgba(73, 204, 144, 0.3));
+    }
+
+    .spec-pill {
+      font-size: 11px;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-topbar {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-topbar:hover {
+      background: #334155;
+      color: #ffffff;
+      border-color: #64748b;
+    }
+
+    .btn-swagger {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(16, 185, 129, 0.2));
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+
+    .btn-swagger:hover {
+      background: linear-gradient(135deg, #0284c7, #0d9488);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-home {
+      background: #0f172a;
+      border-color: #1e293b;
+      color: #94a3b8;
+    }
+
+    .btn-home:hover {
+      color: #f8fafc;
+      border-color: #475569;
+    }
+
+    /* Redoc Dark Theme & Full Contrast Overrides */
+    #redoc-container {
+      background: var(--bg-main);
+      min-height: calc(100vh - 53px);
+    }
+
+    .redoc-wrap {
+      background-color: var(--bg-main) !important;
+      color: #e2e8f0 !important;
+    }
+
+    .api-content {
+      background-color: var(--bg-main) !important;
+      color: #e2e8f0 !important;
+    }
+
+    /* Títulos y textos generales */
+    .redoc-wrap h1, 
+    .redoc-wrap h2, 
+    .redoc-wrap h3, 
+    .redoc-wrap h4,
+    .redoc-wrap h5 {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em;
+    }
+
+    .redoc-wrap p, 
+    .redoc-wrap li, 
+    .redoc-wrap span:not([class*="badge"]), 
+    .redoc-wrap label {
+      color: #cbd5e1 !important;
+    }
+
+    .redoc-wrap a {
+      color: #38bdf8 !important;
+      text-decoration: none;
+    }
+
+    .redoc-wrap a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tablas de Parámetros y Respuestas */
+    .redoc-wrap table {
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 8px !important;
+      background: rgba(15, 23, 42, 0.6) !important;
+    }
+
+    .redoc-wrap th {
+      background: #0f172a !important;
+      color: #94a3b8 !important;
+      font-weight: 600 !important;
+      border-bottom: 1px solid var(--border-color) !important;
+    }
+
+    .redoc-wrap td {
+      border-bottom: 1px solid var(--border-color) !important;
+      color: #e2e8f0 !important;
+    }
+
+    .redoc-wrap code {
+      background: #1e293b !important;
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      padding: 2px 6px !important;
+      border-radius: 4px !important;
+      font-size: 12px !important;
+      border: 1px solid #334155 !important;
+    }
+
+    /* Barra de búsqueda de la barra lateral */
+    .redoc-wrap input[type="text"] {
+      background: #111827 !important;
+      border: 1px solid #374151 !important;
+      color: #f9fafb !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+    }
+
+    .redoc-wrap input[type="text"]::placeholder {
+      color: #9ca3af !important;
+    }
+
+    /* Menú lateral items */
+    .redoc-wrap [data-item-id] {
+      color: #cbd5e1 !important;
+    }
+
+    .redoc-wrap [data-item-id].active {
+      color: #38bdf8 !important;
+      font-weight: 700 !important;
+    }
+
+    /* ==========================================================================
+       CORRECCIÓN QUIRÚRGICA: PANEL DERECHO, SERVIDORES Y PESTAÑAS (NO BLANCOS)
+       ========================================================================== */
+
+    /* Panel derecho */
+    .redoc-wrap > div > div:nth-child(3) {
+      background-color: var(--bg-right-panel) !important;
+    }
+
+    /* 1. Server Selector Overlay Dropdown (El cuadro blanco de la captura) */
+    div[aria-hidden="false"],
+    div[aria-hidden],
+    div[class*="xv"],
+    div[class*="wv"],
+    div[data-role="server-container"] {
+      background-color: #0f172a !important;
+      color: #f8fafc !important;
+      border: 1px solid #334155 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /* Caja de la URL dentro del Server Selector (ej. http://localhost:8000/api/chatbot/) */
+    div[class*="kv"],
+    div[aria-hidden] div > div,
+    div[aria-hidden="false"] div > div {
+      background-color: #020617 !important;
+      border: 1px solid #1e293b !important;
+      border-radius: 6px !important;
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      padding: 8px 12px !important;
+    }
+
+    div[class*="kv"] span,
+    div[aria-hidden] span,
+    div[aria-hidden="false"] span {
+      color: #94a3b8 !important;
+    }
+
+    /* Texto de título del servidor: 'Servidor Local / Docker Compose' */
+    div[class*="wv"] p,
+    div[class*="wv"] span,
+    div[aria-hidden] p,
+    div[aria-hidden="false"] p {
+      color: #cbd5e1 !important;
+      font-weight: 600 !important;
+      margin: 0 0 6px 0 !important;
+    }
+
+    /* 2. React Tabs (Payload, Response samples: 200, 400, etc.) */
+    .react-tabs {
+      background: transparent !important;
+    }
+
+    .react-tabs__tab-list {
+      display: flex !important;
+      gap: 8px !important;
+      padding: 0 !important;
+      margin: 0 0 12px 0 !important;
+      border-bottom: 1px solid #1e293b !important;
+      background: transparent !important;
+      list-style: none !important;
+    }
+
+    /* Pestañas inactivas */
+    .react-tabs__tab {
+      background-color: #1e293b !important;
+      color: #94a3b8 !important;
+      border: 1px solid #334155 !important;
+      border-radius: 8px !important;
+      padding: 6px 14px !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      outline: none !important;
+      box-shadow: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .react-tabs__tab:hover {
+      background-color: #334155 !important;
+      color: #ffffff !important;
+      border-color: #475569 !important;
+    }
+
+    /* Pestaña regular SELECCIONADA (ej. Payload) -> Azul nítido (NUNCA BLANCO) */
+    .react-tabs__tab--selected {
+      background-color: #0284c7 !important;
+      color: #ffffff !important;
+      border-color: #38bdf8 !important;
+      font-weight: 700 !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35) !important;
+    }
+
+    /* Pestañas de Códigos HTTP (200, 201) INACTIVAS */
+    .react-tabs__tab.tab-success,
+    .react-tabs__tab[class*="tab-success"],
+    .react-tabs__tab[class*="tab-2"],
+    li[class*="tab-200"],
+    li[class*="tab-2"] {
+      background-color: rgba(16, 185, 129, 0.15) !important;
+      color: #34d399 !important;
+      border: 1px solid rgba(16, 185, 129, 0.4) !important;
+    }
+
+    /* Pestaña 200 SELECCIONADA -> Verde Esmeralda vibrante con texto blanco ultra legible */
+    .react-tabs__tab--selected.tab-success,
+    .react-tabs__tab--selected[class*="tab-success"],
+    .react-tabs__tab--selected[class*="tab-2"],
+    li[class*="tab-200"].react-tabs__tab--selected,
+    li[class*="tab-2"].react-tabs__tab--selected {
+      background-color: #10b981 !important;
+      color: #ffffff !important;
+      border-color: #34d399 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.45) !important;
+    }
+
+    /* Pestañas de Error HTTP (400, 404, 500) */
+    .react-tabs__tab.tab-error,
+    .react-tabs__tab[class*="tab-error"],
+    .react-tabs__tab[class*="tab-4"],
+    .react-tabs__tab[class*="tab-5"] {
+      background-color: rgba(239, 68, 68, 0.15) !important;
+      color: #f87171 !important;
+      border: 1px solid rgba(239, 68, 68, 0.4) !important;
+    }
+
+    .react-tabs__tab--selected.tab-error,
+    .react-tabs__tab--selected[class*="tab-error"],
+    .react-tabs__tab--selected[class*="tab-4"],
+    .react-tabs__tab--selected[class*="tab-5"] {
+      background-color: #ef4444 !important;
+      color: #ffffff !important;
+      border-color: #fca5a5 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.4) !important;
+    }
+
+    /* Paneles de contenido de pestañas (código / JSON) */
+    .react-tabs__tab-panel {
+      background-color: #040711 !important;
+      border: 1px solid #1e293b !important;
+      border-radius: 8px !important;
+      padding: 12px 16px !important;
+      color: #f1f5f9 !important;
+    }
+
+    .react-tabs__tab-panel pre,
+    .react-tabs__tab-panel code {
+      background: transparent !important;
+      color: #f1f5f9 !important;
+    }
+
+    /* Botón Copy */
+    div[class*="Copy"] button,
+    button[class*="Copy"] {
+      color: #94a3b8 !important;
+      background: transparent !important;
+    }
+
+    div[class*="Copy"] button:hover,
+    button[class*="Copy"]:hover {
+      color: #38bdf8 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar con Branding de FormoDevs y Swagger Logo PNG -->
+  <header class="custom-topbar">
+    <div class="brand-group">
+      <a href="/" class="brand-link" title="Ir al Restaurante">
+        <img src="{% static 'images/formodevs_robot.svg' %}" alt="FormoDevs Robot" class="robot-icon">
+        <span class="brand-title">El Restaurante de Django API</span>
+      </a>
+
+      <!-- Badge Swagger oficial con el PNG -->
+      <div class="brand-badge">
+        <img src="{% static 'images/swagger_logo_white.png' %}" alt="Swagger" class="swagger-logo-header">
+        <span class="spec-pill">ReDoc 3-Paneles</span>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <a href="/swagger/" class="btn-topbar btn-swagger" title="Ir a la interfaz interactiva para probar endpoints">
+        <span>⚡ Swagger UI (Pruebas)</span>
+      </a>
+      <a href="/api/schema.json" target="_blank" class="btn-topbar" title="Descargar esquema OpenAPI 3.0 en JSON">
+        <span>📄 OpenAPI JSON</span>
+      </a>
+      <a href="/" class="btn-topbar btn-home">
+        <span>🍽️ Dashboard</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenedor ReDoc -->
+  <div id="redoc-container"></div>
+
+  <!-- ReDoc Standalone Bundle -->
+  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+  <script>
+    Redoc.init('/api/schema.json', {
+      scrollYOffset: 55,
+      hideDownloadButton: false,
+      expandResponses: '200,201',
+      theme: {
+        spacing: {
+          unit: 5,
+          sectionHorizontal: 40,
+          sectionVertical: 35
+        },
+        breakpoints: {
+          small: '50rem',
+          medium: '75rem',
+          large: '105rem'
+        },
+        colors: {
+          tonalOffset: 0.2,
+          primary: {
+            main: '#38bdf8'
+          },
+          success: {
+            main: '#10b981'
+          },
+          warning: {
+            main: '#f59e0b'
+          },
+          error: {
+            main: '#ef4444'
+          },
+          text: {
+            primary: '#f8fafc',
+            secondary: '#94a3b8'
+          },
+          http: {
+            basic: '#94a3b8',
+            get: '#10b981',
+            post: '#f59e0b',
+            put: '#38bdf8',
+            delete: '#ef4444'
+          },
+          border: {
+            dark: '#1e293b',
+            light: '#334155'
+          },
+          responses: {
+            success: {
+              color: '#10b981',
+              backgroundColor: 'rgba(16, 185, 129, 0.15)',
+              tabTextColor: '#34d399'
+            },
+            error: {
+              color: '#ef4444',
+              backgroundColor: 'rgba(239, 68, 68, 0.15)',
+              tabTextColor: '#f87171'
+            }
+          }
+        },
+        typography: {
+          fontSize: '14px',
+          lineHeight: '1.6',
+          fontFamily: "'Outfit', sans-serif",
+          headings: {
+            fontFamily: "'Outfit', sans-serif",
+            fontWeight: '700',
+            lineHeight: '1.4'
+          },
+          code: {
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: '13px'
+          },
+          links: {
+            color: '#38bdf8'
+          }
+        },
+        sidebar: {
+          backgroundColor: '#060911',
+          textColor: '#cbd5e1',
+          activeTextColor: '#38bdf8',
+          width: '280px'
+        },
+        rightPanel: {
+          backgroundColor: '#0a0f1d',
+          textColor: '#94a3b8',
+          width: '40%',
+          servers: {
+            overlay: {
+              backgroundColor: '#0f172a',
+              textColor: '#f8fafc'
+            },
+            url: {
+              backgroundColor: '#020617'
+            }
+          }
+        },
+        codeBlock: {
+          backgroundColor: '#040711'
+        },
+        schema: {
+          linesColor: '#334155',
+          defaultDetailsWidth: '75%',
+          typeNameColor: '#94a3b8',
+          typeTitleColor: '#38bdf8'
+        }
+      }
+    }, document.getElementById('redoc-container'));
+
+    // Observer en tiempo real para corregir dinámicamente cualquier contenedor blanco residual
+    const observer = new MutationObserver(() => {
+      // 1. Corregir cualquier caja de servidor expandida
+      document.querySelectorAll('div[aria-hidden="false"], div[aria-hidden="true"]').forEach(el => {
+        el.style.setProperty('background-color', '#0f172a', 'important');
+        el.style.setProperty('color', '#f8fafc', 'important');
+      });
+
+      // 2. Corregir cajas de URL
+      document.querySelectorAll('div[aria-hidden] div > div').forEach(el => {
+        el.style.setProperty('background-color', '#020617', 'important');
+        el.style.setProperty('color', '#38bdf8', 'important');
+        el.style.setProperty('border-color', '#1e293b', 'important');
+      });
+
+      // 3. Corregir pestañas seleccionadas para que NUNCA sean blancas
+      document.querySelectorAll('.react-tabs__tab--selected').forEach(tab => {
+        const text = tab.textContent.trim();
+        if (text === '200' || text === '201' || tab.classList.contains('tab-success')) {
+          tab.style.setProperty('background-color', '#10b981', 'important');
+          tab.style.setProperty('color', '#ffffff', 'important');
+        } else if (text.startsWith('4') || text.startsWith('5') || tab.classList.contains('tab-error')) {
+          tab.style.setProperty('background-color', '#ef4444', 'important');
+          tab.style.setProperty('color', '#ffffff', 'important');
+        } else {
+          tab.style.setProperty('background-color', '#0284c7', 'important');
+          tab.style.setProperty('color', '#ffffff', 'important');
+        }
+      });
+    });
+
+    observer.observe(document.getElementById('redoc-container'), { childList: true, subtree: true });
+  </script>
+</body>
+</html>

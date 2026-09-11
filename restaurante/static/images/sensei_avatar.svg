@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="mintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Fondo circular con borde sutil -->
+  <circle cx="100" cy="100" r="96" fill="url(#bgGrad)" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6 3" />
+
+  <!-- Efecto de luz ambiental naranja -->
+  <circle cx="100" cy="120" r="65" fill="#f97316" opacity="0.15" />
+
+  <!-- Sombra / Mesa inferior -->
+  <ellipse cx="100" cy="180" rx="75" ry="14" fill="#030712" opacity="0.6" />
+
+  <!-- Cuerpo y Hoodie Tech -->
+  <path d="M 45 190 C 45 145, 70 135, 100 135 C 130 135, 155 145, 155 190 Z" fill="#1e293b" stroke="#334155" stroke-width="2" />
+  <!-- Cuello del hoodie -->
+  <path d="M 82 136 Q 100 152 118 136 L 108 175 L 92 175 Z" fill="#0f172a" />
+  <path d="M 88 136 Q 100 148 112 136" stroke="#f97316" stroke-width="2" fill="none" />
+
+  <!-- Cintas del hoodie -->
+  <line x1="94" y1="145" x2="93" y2="162" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+  <line x1="106" y1="145" x2="107" y2="162" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Logo Django / Python Badge en el pecho -->
+  <rect x="122" y="152" width="14" height="14" rx="3" fill="#092e20" stroke="#10b981" stroke-width="1" />
+  <text x="129" y="162" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#10b981" text-anchor="middle">dj</text>
+
+  <!-- Cabeza y Cuello -->
+  <rect x="91" y="115" width="18" height="22" rx="4" fill="#d97706" />
+  <ellipse cx="100" cy="92" rx="30" ry="34" fill="url(#skinGrad)" />
+
+  <!-- Pelo y barba moderna -->
+  <path d="M 70 82 C 68 55, 100 48, 130 65 C 132 78, 126 84, 126 84 C 122 68, 102 60, 78 72 Z" fill="#1c1917" />
+  <!-- Barba estilizada -->
+  <path d="M 76 96 C 76 122, 90 128, 100 128 C 110 128, 124 122, 124 96 C 124 112, 110 122, 100 122 C 90 122, 76 112, 76 96 Z" fill="#1c1917" opacity="0.9" />
+
+  <!-- Sonrisa amistosa -->
+  <path d="M 92 110 Q 100 116 108 110" stroke="#78350f" stroke-width="2.2" stroke-linecap="round" fill="none" />
+
+  <!-- Anteojos de sol / Tech modernos -->
+  <g filter="url(#glow)">
+    <!-- Marco izquierdo -->
+    <rect x="74" y="82" width="22" height="15" rx="4" fill="url(#glassGrad)" stroke="#f97316" stroke-width="1.8" />
+    <!-- Marco derecho -->
+    <rect x="104" y="82" width="22" height="15" rx="4" fill="url(#glassGrad)" stroke="#f97316" stroke-width="1.8" />
+    <!-- Puente de los anteojos -->
+    <line x1="96" y1="87" x2="104" y2="87" stroke="#f97316" stroke-width="2" />
+    <!-- Destello blanco en cristales -->
+    <line x1="77" y1="85" x2="85" y2="85" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+    <line x1="107" y1="85" x2="115" y2="85" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <!-- Ícono Guampa de Tereré Formoseño (Esquina inferior derecha) -->
+  <g transform="translate(132, 125)">
+    <!-- Guampa / Vaso térmico -->
+    <path d="M 6 22 L 9 52 C 10 57, 28 57, 29 52 L 32 22 Z" fill="#78350f" stroke="#451a03" stroke-width="1.5" />
+    <!-- Borde de aluminio -->
+    <ellipse cx="19" cy="22" rx="13" ry="3.5" fill="#94a3b8" stroke="#cbd5e1" stroke-width="1" />
+    <!-- Yerba con hielo -->
+    <ellipse cx="19" cy="22" rx="11" ry="2.5" fill="#15803d" />
+    <!-- Hojitas de menta fresca -->
+    <path d="M 23 18 C 26 13, 31 16, 28 20 Z" fill="url(#mintGrad)" />
+    <!-- Bombilla metálica -->
+    <line x1="17" y1="23" x2="7" y2="2" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
+    <circle cx="6" cy="1" r="2" fill="#cbd5e1" />
+  </g>
+
+  <!-- Insignia FORMO DEV flotante -->
+  <g transform="translate(18, 24)">
+    <rect x="0" y="0" width="62" height="18" rx="9" fill="#0f172a" stroke="#f97316" stroke-width="1" />
+    <circle cx="9" cy="9" r="4" fill="#22c55e" />
+    <text x="35" y="12.5" font-family="'Inter', sans-serif" font-size="8.5" font-weight="bold" fill="#f8fafc" text-anchor="middle">FORMO DEV</text>
+  </g>
+</svg>
