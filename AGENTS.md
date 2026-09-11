@@ -10,6 +10,7 @@ Este documento es la **fuente de verdad y memoria técnica canónica** para cual
 - **Nombre Oficial:** El Restaurante de Django (Laboratorio Interactivo FORMO DEV).
 - **Propietario / Autor:** Gerardo Medina ([@Gerardomedinav](https://github.com/Gerardomedinav) • `gerardomedinav@hotmail.es`).
 - **Repositorio Oficial:** `git@github.com:Gerardomedinav/django_charla.git` / `https://github.com/Gerardomedinav/django_charla`.
+- **Despliegue en Producción (PythonAnywhere):** `https://germedi.pythonanywhere.com/` (Swagger en `/swagger/`, ReDoc en `/redoc/`).
 - **Propósito:** Plataforma web educativa interactiva desarrollada para la comunidad tecnológica de **FORMO DEV** en Formosa, Argentina. Enseña de manera práctica la arquitectura **MVT** (Model - View - Template), la analogía de las Tres Capas (*Little Lemon*), despliegue en la nube (**PythonAnywhere**), orquestación con **Docker & PostgreSQL**, y APIs interactivas con **Swagger UI / ReDoc**.
 - **Estética Visual:** **Cyberpunk HUD ("Neo-Formosa 2088")**.
   - Tipografías: `Orbitron` (titulares HUD), `Share Tech Mono` (telemetría y chips), `JetBrains Mono` (código y consolas).

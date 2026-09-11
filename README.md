@@ -1,11 +1,18 @@
 # 🍽️ El Restaurante de Django (Laboratorio Interactivo FORMO DEV)
 
+[![Demo Online](https://img.shields.io/badge/Demo_Online-PythonAnywhere-00ff88?style=for-the-badge&logo=python&logoColor=black)](https://germedi.pythonanywhere.com/)
 [![Django Version](https://img.shields.io/badge/Django-5.1-0C4B33?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
 [![Python Version](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0_Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](/swagger/)
+[![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0_Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://germedi.pythonanywhere.com/swagger/)
 [![UI Style](https://img.shields.io/badge/UI-Cyberpunk_HUD_Neo--Formosa_2088-00ff88?style=for-the-badge)](#)
+
+> 🌐 **Plataforma Desplegada en Producción (PythonAnywhere):**  
+> 🔗 **Web Oficial:** [https://germedi.pythonanywhere.com/](https://germedi.pythonanywhere.com/)  
+> 📑 **Documentación Swagger UI:** [https://germedi.pythonanywhere.com/swagger/](https://germedi.pythonanywhere.com/swagger/)  
+> 📜 **Manual Técnico ReDoc:** [https://germedi.pythonanywhere.com/redoc/](https://germedi.pythonanywhere.com/redoc/)  
+> 🤖 **Endpoint API REST del Sensei:** `POST https://germedi.pythonanywhere.com/api/chatbot/`
 
 Bienvenido a **"El Restaurante de Django"**, una plataforma web educativa interactiva desarrollada para la comunidad de **FORMO DEV** (Formosa, Argentina). Este laboratorio enseña de forma visual y práctica la arquitectura **MVT** (Model - View - Template), la ingeniería en **Tres Capas**, y las mejores prácticas de **desarrollo modular con Docker, WebSockets y PostgreSQL**.
 
@@ -219,4 +226,3 @@ el_restaurante_de_django/
 
 **Comunidad FORMO DEV**  
 *Impulsando el talento tecnológico desde Formosa para el mundo entero.* ☀️🇦🇷
-```
