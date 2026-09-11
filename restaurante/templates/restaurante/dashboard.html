@@ -2308,6 +2308,18 @@
       }
     }
 
+    // Soporte para abrir pestañas o Sensei directamente desde URL (ej. ?tab=cocina o ?sensei=1)
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tab = urlParams.get('tab');
+      if (tab && ['guia', 'cocina', 'terminal', 'funciones'].includes(tab)) {
+        switchTab(tab);
+      }
+      if (urlParams.get('sensei') === '1') {
+        toggleChatbot();
+      }
+    });
+
     // Copiar comandos al portapapeles
     function copiarComando(button, texto) {
       navigator.clipboard.writeText(texto).then(() => {
